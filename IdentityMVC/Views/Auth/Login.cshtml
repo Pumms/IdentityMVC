@@ -1,0 +1,131 @@
+﻿@using IdentityMVC.ViewModels
+@model AuthLogin
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+
+<!-- Head -->
+<head>
+
+    <title>Login</title>
+
+    <!-- For-Mobile-Apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Flat Login & Register Forms Widget Responsive, Login Form Web Template, Flat Pricing Tables, Flat Drop-Downs, Sign-Up Web Templates, Flat Web Templates, Login Sign-up Responsive Web Template, Smartphone Compatible Web Template, Free Web Designs for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- //For-Mobile-Apps -->
+    <!-- Style -->
+    <link href="~/Content/css/style.css" rel="stylesheet" />
+
+    <!-- Web-Fonts -->
+    <link href='//fonts.googleapis.com/css?family=Raleway:400,500,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+    <!-- //Web-Fonts -->
+
+</head>
+<!-- //Head -->
+<!-- Body -->
+<body>
+
+    <h1>LOGIN</h1>
+
+    <div class="container w3layouts agileits">
+        <div class="login w3layouts">
+            @using (Html.BeginForm("Login", "Auth", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <label>Email</label>
+                @Html.TextBoxFor(m => m.Email, new { @class = "user", placeholder = "Email", required = true })
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                @*<input type="text" class="user" placeholder="Email" required="">*@
+                <label>Password</label>
+                @Html.PasswordFor(m => m.Password, new { @class = "pass", placeholder = "Password", required = true })
+                @*<input type="password" class="pass" placeholder="Password" required="">*@
+                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                <ul>
+                    <li>
+                        <input type="checkbox" id="brand1" value="" name="RememberMe">
+                        @*<input type="checkbox" data-val="true" data-val-required="The Remember me? field is required." id="RememberMe brand1" name="RememberMe" value="true">*@
+                        <label for="brand1"><span></span>Remember me</label>
+                    </li>
+                </ul>
+                <input type="submit" value="LOGIN">
+            }
+            <div class="clear"></div>
+        </div>
+
+        <div class="reg w3l aits">
+
+            @*<h3>Not a member?</h3>
+                <a class="popup-with-zoom-anim hvr-underline-from-left" href="#small-dialog">Register Here</a>
+                <div class="clear"></div>*@
+
+            <!-- Popup-Box -->
+            <div id="popup w3l">
+                <div id="small-dialog" class="mfp-hide aits">
+                    <div class="pop_up agileits">
+                        <div class="register w3layouts">
+                            <form action="#" method="post">
+                                <label>First Name</label>
+                                <input type="text" Name="First Name" placeholder="First Name" required="">
+                                <label>Last Name</label>
+                                <input type="text" Name="Last Name" placeholder="Last Name" required="">
+                                <label>Email</label>
+                                <input type="text" Name="Email" placeholder="Email" required="">
+                                <label>Password</label>
+                                <input type="password" Name="Password" placeholder="Password" required="">
+                                <label>Confirm Password</label>
+                                <input type="password" Name="Password" class="lessgap" placeholder="Confirm Password" required="">
+                                <label>Phone Number</label>
+                                <input type="text" Name="Phone Number" placeholder="Phone Number" required="">
+                                <div class="send-button">
+                                    <input type="submit" value="REGISTER">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button title="Close (Esc)" type="button" class="mfp-close w3layouts">×</button>
+            <!-- //Popup-Box -->
+
+        </div>
+
+    </div>
+
+    <!-- Custom-JavaScript-File-Links -->
+    <script src="~/Content/js/jquery-2.1.4.min.js"></script>
+    <!-- pop-up-box -->
+    <script src="~/Content/js/jquery.magnific-popup.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.popup-with-zoom-anim').magnificPopup({
+                type: 'inline',
+                fixedContentPos: false,
+                fixedBgPos: true,
+                overflowY: 'auto',
+                closeBtnInside: true,
+                preloader: false,
+                midClick: true,
+                removalDelay: 300,
+                mainClass: 'my-mfp-zoom-in'
+            });
+        });
+    </script>
+    <!--//pop-up-box -->
+    <!-- //Custom-JavaScript-File-Links -->
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+
+</body>
+<!-- //Body -->
+
+</html>

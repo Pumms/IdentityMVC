@@ -11,32 +11,40 @@ namespace IdentityMVC.Controllers
     {
         public ActionResult Index()
         {
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            if (Session["login"] != null)
+            if (User.Identity.IsAuthenticated)
             {
                 ViewBag.Message = "Your application description page.";
                 return View();
             }
             else
             {
-                return Content("<script language='javascript' type='text/javascript'>alert('You must Login First');window.location.href = '/Account/Login';</script>");
+                return Content("<script language='javascript' type='text/javascript'>alert('You must Login First');window.location.href = '/Auth/Login';</script>");
+            }
+        }
+
+        public ActionResult About()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                ViewBag.Message = "Your application description page.";
+                return View();
+            }
+            else
+            {
+                return Content("<script language='javascript' type='text/javascript'>alert('You must Login First');window.location.href = '/Auth/Login';</script>");
             }
         }
 
         public ActionResult Contact()
         {
-            if (Session["login"] != null)
+            if (User.Identity.IsAuthenticated)
             {
-                ViewBag.Message = "Your contact page.";
+                ViewBag.Message = "Your application description page.";
                 return View();
             }
             else
             {
-                return Content("<script language='javascript' type='text/javascript'>alert('You must Login First');window.location.href = '/Account/Login';</script>");
+                return Content("<script language='javascript' type='text/javascript'>alert('You must Login First');window.location.href = '/Auth/Login';</script>");
             }
         }
 

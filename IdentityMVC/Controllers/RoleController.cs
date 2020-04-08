@@ -9,7 +9,7 @@ using Microsoft.AspNet.Identity.Owin;
 
 namespace IdentityMVC.Controllers
 {
-    [Authorize(Roles = "admin")]
+    //[AuthorizeRedirect(Roles = "admin")]
     public class RoleController : Controller
     {
         private ApplicationRoleManager _roleManager;
@@ -47,7 +47,7 @@ namespace IdentityMVC.Controllers
             }
             else
             {
-                return Content("<script language='javascript' type='text/javascript'>window.location.href('/Home/AccessDenied');</script>");
+                return Content("<script language='javascript' type='text/javascript'>window.location.href = '/Home/AccessDenied';</script>");
             }
         }
 

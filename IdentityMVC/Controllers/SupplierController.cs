@@ -7,14 +7,21 @@ using System.Web.Mvc;
 
 namespace IdentityMVC.Controllers
 {
-    [Authorize(Roles = "admin")]
+    //[AuthorizeRedirect(Roles = "admin")]
     public class SupplierController : Controller
     {
         IdentityMVCEntities con = new IdentityMVCEntities();
         // GET: Supplier
         public ActionResult Index()
         {
-            return View(con.Suppliers.ToList());
+            if (User.IsInRole("admin"))
+            {
+                return View(con.Suppliers.ToList());
+            }
+            else
+            {
+                return Content("<script language='javascript' type='text/javascript'>window.location.href = '/Home/AccessDenied';</script>");
+            }
         }
 
         public ActionResult Details(int id)
@@ -24,7 +31,7 @@ namespace IdentityMVC.Controllers
 
         public ActionResult Create()
         {
-            return RedirectToAction("Register", "Account");
+            return RedirectToAction("Register", "Auth");
         }
 
         [HttpPost]

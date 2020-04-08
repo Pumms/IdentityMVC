@@ -197,3 +197,4 @@ D:\Projek Visual Studio\IdentityMVC\IdentityMVC\obj\Debug\IdentityMVC.csproj.Cor
 D:\Projek Visual Studio\IdentityMVC\IdentityMVC\obj\Debug\IdentityMVC.csproj.CopyComplete
 D:\Projek Visual Studio\IdentityMVC\IdentityMVC\obj\Debug\IdentityMVC.dll
 D:\Projek Visual Studio\IdentityMVC\IdentityMVC\obj\Debug\IdentityMVC.pdb
+D:\Projek Visual Studio\IdentityMVC\IdentityMVC\obj\Debug\IdentityMVC.csprojAssemblyReference.cache
